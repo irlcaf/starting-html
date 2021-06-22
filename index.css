@@ -1,0 +1,24 @@
+body{
+    background-color: rgb(224, 230, 229);
+    text-align: center;
+}
+.button {
+    font: bold 11px Arial;
+    text-decoration: none;
+    background-color: #EEEEEE;
+    color: #333333;
+    padding: 2px 6px 2px 6px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+  }
+
+.question-container{
+    background-color: papayawhip;
+    margin: 0px 35%;
+    padding: 20px 20px;
+    border-radius: 10px;
+    border-color: pink;
+    border-style: solid;
+}

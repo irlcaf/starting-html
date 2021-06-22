@@ -1,3 +1,5 @@
+
+let DEBUG = true;
 const multipleChoiceQuestions = [
   {
     question: "What is the name for the Jewish New Year?",
@@ -46,19 +48,53 @@ const multipleChoiceQuestions = [
   },
 ];
 
+let questionNumber = 0;
+localStorage.setItem('totalScore',0);
+
 let getElement = (e) => {
   e.preventDefault();
-  console.log(document.getElementById("question"));
+  checkAnswer(questionNumber);
+  questionNumber++;
+  if(questionNumber < multipleChoiceQuestions.length){
+    loadText(questionNumber);
+  }else{
+    window.location.href = "./results.html";
+    if(DEBUG){
+        console.log("No more questions");
+        console.log("Total score is: "+totalScore);
+    }
+  }
 };
 
 (function loadFirstQuestion(){
-    var question = document.getElementById("question");
-    question.innerText = multipleChoiceQuestions[0].question;
-
-    var [option_1, option_2, option_3, option_4] = [document.getElementById("option-1"), document.getElementById("option-2"), document.getElementById("option-3"),document.getElementById("option-4")];
-    option_1.innerHTML = multipleChoiceQuestions[0].options[0];
-    option_2.innerHTML = multipleChoiceQuestions[0].options[1];
-    option_3.innerText = multipleChoiceQuestions[0].options[2];
-    option_4.innerText = multipleChoiceQuestions[0].options[3];
-
+    loadText(questionNumber);
 })();
+
+function loadText(questionNumber){
+    var question = document.getElementById("question");
+    question.innerText = multipleChoiceQuestions[questionNumber].question;
+    const options = document.querySelectorAll('label[name="options"]')
+
+    for(i=0;i < options.length; i++){
+        options[i].innerHTML = multipleChoiceQuestions[questionNumber].options[i];
+    }
+
+}
+
+function checkAnswer(questionNumber){
+    const radios = document.querySelectorAll('input[name="radios"]');
+    const correctAnswer = multipleChoiceQuestions[questionNumber].correctAnswer;
+    if(radios[correctAnswer].checked === true){
+        totalScore = localStorage.getItem('totalScore');
+        totalScore++;
+        localStorage.setItem('totalScore',totalScore);
+        if(DEBUG === true){
+            console.log("Correct answer for question #" +questionNumber+" is: "+multipleChoiceQuestions[questionNumber].options[correctAnswer])
+            console.log("Current score: "+totalScore)
+        }
+    }else{
+        if(DEBUG){
+            console.log("Incorrect answer!")
+        }
+    }
+}
