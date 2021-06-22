@@ -1,4 +1,5 @@
 body{
+    font:bold 12px Lucida Handwriting;
     background-color: rgb(224, 230, 229);
     text-align: center;
 }
@@ -21,4 +22,10 @@ body{
     border-radius: 10px;
     border-color: pink;
     border-style: solid;
+}
+
+.form-container{
+    text-align: left;
+    margin: 0px 35%;
+
 }
