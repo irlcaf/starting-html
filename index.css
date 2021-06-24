@@ -4,7 +4,7 @@ body{
     text-align: center;
 }
 .button {
-    font: bold 11px Arial;
+    font: bold 11px Lucida;
     text-decoration: none;
     background-color: #EEEEEE;
     color: #333333;
@@ -14,11 +14,14 @@ body{
     border-bottom: 1px solid #333333;
     border-left: 1px solid #CCCCCC;
   }
-
+  
+.answers{
+    font: bold 24px Lucida;
+}
 .question-container{
     background-color: papayawhip;
-    margin: 0px 35%;
-    padding: 20px 20px;
+    margin: 0px 30%;
+    padding: 30px 30px;
     border-radius: 10px;
     border-color: pink;
     border-style: solid;

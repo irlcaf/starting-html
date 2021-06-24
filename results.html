@@ -9,13 +9,27 @@
   </head>
   <body>
     <h1 style="text-align: center">The results for your test are:</h1>
-    <output style="text-align: center" id="result"></output>
+    <div class="question-container">
+        <output style="text-align: center" id="result" class = "answers"></output><br>
+    </div>
     <br />
     <a href="index.html" class="button">Return to Home Page!</a>
     <br>
     <script>
       result = document.getElementById("result");
-      result.innerHTML = localStorage.getItem("totalScore");
+      const totalScore = localStorage.getItem("totalScore");
+      const lengthQuestions = localStorage.getItem("length");
+        let performance;
+      if(totalScore/lengthQuestions <= 0.33){
+        performance = "You got only one third of the questions, dumb bitch."
+      }else if(totalScore/lengthQuestions <= 0.66){
+        performance = "Congrats you're smarter than I thought you were."
+      }else if (totalScore/lengthQuestions <= 0.99){
+        performance = "Excellent."
+      }else{
+        performance = "Perfect Score!"
+      }
+      result.innerHTML = totalScore+"/"+lengthQuestions +"<br><br>" + performance;
     </script>
   </body>
 </html>
